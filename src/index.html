@@ -1,0 +1,169 @@
+<html lang="en">
+  <head>
+    <title>OyeJs-Spotlight</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Chau+Philomene+One:400,400italic' rel='stylesheet' type='text/css'>
+    <style>
+      html, body {
+        margin: 0;
+        background-color: #000;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+      body {
+        background-image: url('https://www.evernote.com/shard/s176/sh/a1effe73-a40a-4c07-83f4-c00a5bfc7a0f/5e760bf5ebb54364/res/72d7ae2c-8636-497e-a872-7580c3d127ce/skitch.png?resizeSmall&width=832');
+        background-position: 70% center;
+        background-size: cover;
+        cursor: none;
+      }
+      .cover {
+        width: 10000px;
+        height: 10000px;
+        position: fixed;
+        z-index: 99999;
+        opacity: 0.97;
+      }
+      .spotlight {
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        top: 4800px;
+        left: 4800px;
+        background: radial-gradient(ellipse at center, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 70%);
+      }
+      .left, .right, .top, .bottom {
+        background-color: rgba(0, 0, 0, 1);
+        position: absolute;
+      }
+      .left {
+        left: 0;
+        top: 0;
+        width: 4800px;
+        height: 10000px;
+      }
+      .right {
+        right: 0;
+        top: 0;
+        width: 4800px;
+        height: 10000px;
+      }
+      .top {
+        left: 4800px;
+        top: 0;
+        width: 400px;
+        height: 4800px;
+      }
+      .bottom {
+        left: 4800px;
+        bottom: 0;
+        width: 400px;
+        height: 4800px;
+      }
+      h1, h2 {
+        width: 100%;
+        text-align: center;
+        font-family: 'Chau Philomene One', sans-serif;
+        position: fixed;
+      }
+      h1 {
+        color: #a73737; /* fallback for old browsers */
+        color: -webkit-linear-gradient(to left, #a73737 , #7a2828); /* Chrome 10-25, Safari 5.1-6 */
+        color: linear-gradient(to left, #a73737 , #7a2828); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        font-size: 250px;
+        top: 0px;
+      }
+      h2 {
+        color: #24C6DC; /* fallback for old browsers */
+        color: -webkit-linear-gradient(to left, #24C6DC , #514A9D); /* Chrome 10-25, Safari 5.1-6 */
+        color: linear-gradient(to left, #24C6DC , #514A9D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        font-size: 50px;
+        bottom: 30px;
+      }
+      #snow{
+        background: none;
+        font-family: Androgyne;
+        background-image: url('https://raw.githubusercontent.com/watson/arcticjs.club/gh-pages/s1.png'), url('https://raw.githubusercontent.com/watson/arcticjs.club/gh-pages/s2.png'), url('https://raw.githubusercontent.com/watson/arcticjs.club/gh-pages/s3.png');
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index:1;
+        -webkit-animation: snow 10s linear infinite;
+        -moz-animation: snow 10s linear infinite;
+        -ms-animation: snow 10s linear infinite;
+        animation: snow 10s linear infinite;
+      }
+      @keyframes snow {
+        0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+        50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+        100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+      }
+      @-moz-keyframes snow {
+        0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+        50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+        100% {background-position: 400px 1000px, 200px 400px, 100px 300px;}
+      }
+      @-webkit-keyframes snow {
+        0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+        50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+        100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+      }
+      @-ms-keyframes snow {
+        0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+        50% {background-position: 500px 500px, 100px 200px, -100px 150px;}
+        100% {background-position: 500px 1000px, 200px 400px, -100px 300px;}
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="snow"></div>
+    <main>
+      <h1>Tahoe Dreamin</h1>
+      <h2>by<br>Harshit Pandey</h2>
+    </main>
+
+    <div class="cover">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="top"></div>
+      <div class="bottom"></div>
+      <div class="spotlight"></div>
+    </div>
+
+    <audio src="https://raw.githubusercontent.com/watson/arcticjs.club/gh-pages/wind.mp3" autoplay loop></audio>
+
+    <script>
+      var cover = document.querySelector('.cover')
+      function move (x, y) {
+        cover.style.left = (x - 5000) + 'px'
+        cover.style.top = (y - 5000) + 'px'
+      }
+      // start centered
+      move(window.screen.width / 2, window.screen.height / 2)
+      document.addEventListener('mousemove', function (e) {
+        move(e.pageX, e.pageY)
+      })
+      document.addEventListener('touchmove', function (e) {
+        e.preventDefault()
+        var touch = e.changedTouches[0]
+        if (touch) move(touch.pageX, touch.pageY)
+      })
+      var h1 = document.querySelector('h1')
+      var h2 = document.querySelector('h2')
+      function fitText () {
+        h1.style.fontSize = Math.min(h1.offsetWidth / 5, 220) + 'px'
+        h2.style.fontSize = Math.min(h2.offsetWidth / 25, 90) + 'px'
+      }
+      fitText()
+      window.addEventListener('resize', fitText)
+      var audio = document.querySelector('audio')
+      document.addEventListener('touchstart', function (e) {
+        audio.play()
+      })
+    </script>
+  </body>
+</html>
